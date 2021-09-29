@@ -64,6 +64,11 @@ const queryController = () => {
       let collegesInQueryState = await College.find({ state: query });
       res.status(200).json(collegesInQueryState);
     },
+    async filterCollegeByCourse(req, res) {
+      let query = req.params.query;
+      let collegesInQueryCourse = await College.find({ coursesOffered: query }).sort({rank:1})
+      res.status(200).json(collegesInQueryCourse);
+    },
   };
 };
 
